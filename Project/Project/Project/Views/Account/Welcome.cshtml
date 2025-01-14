@@ -1,0 +1,77 @@
+﻿@using System.Security.Claims;
+@{
+    ViewData["Title"] = "Welcome";
+}
+
+<h1>Welcome</h1>
+@{
+    var user = User.FindFirst(ClaimTypes.Name);
+}
+<h3>@user.Value</h3>
+
+<script>
+    // Thoi gian hiển thị thông login thành công
+    setTimeout(() => {
+        const message = document.getElementById('success-message');
+        if (message) {
+            message.style.display = 'none';
+        }
+    }, 3000);
+</script>
+
+
+
+<h1 class="my-4 text-center text-primary">
+    <i class="bi bi-person-circle"></i> Admin
+</h1>
+
+
+<!-- Create New Button -->
+<div class="d-flex justify-content-end mb-3">
+    <a asp-action="Create" class="btn btn-success">
+        <i class="bi bi-plus-circle"></i> Create New
+    </a>
+
+    <script>
+        // Hiển thị tb Đã ADD Thành công
+        setTimeout(() => {
+            const message = document.getElementById('success-message');
+            if (message) {
+                message.style.display = 'none';
+            }
+        }, 3000);
+    </script>
+
+</div>
+
+<!-- Product Table -->
+<table class="table table-bordered table-striped table-hover shadow-sm">
+    <thead class="table-dark">
+
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var item in Model)
+            {
+               
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center text-muted">No products available.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<!-- Nút Quay Về Trang Login -->
+<div class="d-flex justify-content-center mt-4">
+    <a asp-controller="Account" class="btn btn-warning">
+        <i class="bi bi-arrow-left-circle"></i> LogOut
+    </a>
+</div>
+
+

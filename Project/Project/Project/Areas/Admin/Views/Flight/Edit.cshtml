@@ -1,0 +1,77 @@
+﻿@model Project.Models.Flight
+
+@{
+    ViewData["Title"] = "Edit Flight";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center text-primary mt-4">@ViewData["Title"]</h1>
+<p class="text-muted text-center">Edit the flight details below and click Save to update.</p>
+<hr />
+
+<div class="row justify-content-center mt-4">
+    <div class="col-md-6">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+            <input type="hidden" asp-for="FlightID" />
+
+            <!-- Flight Number -->
+            <div class="mb-3">
+                <label asp-for="FlightNumber" class="form-label">
+                    Flight Number <span class="text-danger">*</span>
+                </label>
+                <input asp-for="FlightNumber" class="form-control" />
+                <span asp-validation-for="FlightNumber" class="text-danger"></span>
+            </div>
+
+      
+
+            <!-- Departure Time -->
+            <div class="mb-3">
+                <label asp-for="DepartureTime" class="form-label">
+                    Departure Time <span class="text-danger">*</span>
+                </label>
+                <input asp-for="DepartureTime" class="form-control" type="datetime-local" />
+                <span asp-validation-for="DepartureTime" class="text-danger"></span>
+            </div>
+
+            <!-- Arrival Time -->
+            <div class="mb-3">
+                <label asp-for="ArrivalTime" class="form-label">
+                    Arrival Time <span class="text-danger">*</span>
+                </label>
+                <input asp-for="ArrivalTime" class="form-control" type="datetime-local" />
+                <span asp-validation-for="ArrivalTime" class="text-danger"></span>
+            </div>
+
+            <!-- Price -->
+            <div class="mb-3">
+                <label asp-for="Price" class="form-label">
+                    Price <span class="text-danger">*</span>
+                </label>
+                <input asp-for="Price" class="form-control" type="number" step="0.01" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <!-- Create Date (Readonly) -->
+            <div class="mb-3">
+                <label asp-for="CreateDate" class="form-label">
+                    Created Date
+                </label>
+                <input asp-for="CreateDate" class="form-control" type="datetime-local" readonly />
+            </div>
+
+            <!-- Is Active -->
+            <div class="form-check mb-3">
+                <input class="form-check-input" asp-for="IsActive" />
+                <label class="form-check-label" asp-for="IsActive">Active</label>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="d-flex justify-content-between">
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

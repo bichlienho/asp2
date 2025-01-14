@@ -1,0 +1,71 @@
+﻿@model Project.Models.Airport
+@{
+    ViewData["Title"] = "Add Airport";
+}
+
+<div class="content">
+    <div class="container">
+        <div class="page-title">
+            <h3 class="text-center text-primary mb-4">Add Airport</h3>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Fill in the Airport Details</h5>
+                    </div>
+                    <div class="card-body">
+                        <form asp-action="PostAdd" asp-controller="Airport" asp-area="Admin" method="post" novalidate>
+                            @Html.AntiForgeryToken()
+
+                            <!-- Validation Summary -->
+                            <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                            <!-- City Field -->
+                            <!-- City Field -->
+                            <div class="mb-4">
+                                <label for="City" class="form-label fw-bold">Departure airport <span class="text-danger">*</span></label>
+                                <input asp-for="City" class="form-control shadow-sm" />
+                                <span asp-validation-for="City" class="text-danger"></span>
+                            </div>
+
+                            <!-- Airport Name Field -->
+                            <div class="mb-4">
+                                <label for="AirportName" class="form-label fw-bold">Landing airport <span class="text-danger">*</span></label>
+                                <input asp-for="AirportName" class="form-control shadow-sm" />
+                                <span asp-validation-for="AirportName" class="text-danger"></span>
+                            </div>
+
+
+                            <!-- IsActive Checkbox -->
+                            <div class="mb-4 form-check">
+                                <input asp-for="IsActive" class="form-check-input shadow-sm" id="IsActiveCheckbox" />
+                                <label for="IsActiveCheckbox" class="form-check-label fw-bold">
+                                    Is Active
+                                </label>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary me-2">
+                                    <i class="fas fa-save"></i> Save
+                                </button>
+                                <a asp-action="Index" class="btn btn-secondary">
+                                    <i class="fas fa-times"></i> Cancel
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

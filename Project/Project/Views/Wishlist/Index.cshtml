@@ -1,0 +1,24 @@
+﻿@model Project.Models.Wishlist
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wishlist</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h2>Wishlist Item Count: <span id="itemCount">@Model.ItemCount</span></h2>
+    <button id="addButton">Add Item</button>
+
+    <script>
+        $(document).ready(function () {
+            $('#addButton').on('click', function () {
+                $.post('@Url.Action("/Wishlist/index", "Wishlist")', function (data) {
+                    $('#itemCount').text(data.itemCount); // Update the item count
+                });
+            });
+        });
+    </script>
+</body>
+</html>

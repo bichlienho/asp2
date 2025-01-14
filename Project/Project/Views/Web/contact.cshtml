@@ -1,0 +1,133 @@
+﻿@model Project.Models.ContactUs
+
+@{
+    ViewData["Title"] = "Contact";
+    Layout = "~/Views/Frontend.cshtml";
+}
+<br/>
+<br />
+<br/>
+<br />
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Contact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <!-- Start Banner Area -->
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Contact Us</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="index.html">Home <i class="bi bi-arrow-right-short"></i></a>
+                        <a href="category.html">Contact</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Banner Area -->
+    <!--================Contact Area =================-->
+    <section class="contact_area section_gap_bottom">
+        <div class="container">
+            <div class="row">
+                <!-- Contact Information Section -->
+                <div class="col-lg-6">
+                    <div class="contact_info">
+                        <div class="info_item mb-4">
+                            <i class="bi bi-house-door-fill text-primary me-2"></i>
+                            <h6>Van Phuc, HCMC</h6>
+                           
+                        </div>
+                        <div class="info_item mb-4">
+                            <i class="bi bi-telephone-fill text-primary me-2"></i>
+                            <h6><a href="#">+84 038.821.5124</a></h6>
+                            <p>Monday to Friday 9AM to 6 PM</p>
+                        </div>
+                        <div class="info_item">
+                            <i class="bi bi-envelope-fill text-primary me-2"></i>
+                            <h6><a href="#">aptechgroupproject@gmail.com</a></h6>
+                            <p>Send us your query anytime!</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Google Map Section -->
+                        <div class="col-lg-12">
+                            <div class="rounded overflow-hidden shadow">
+                                <iframe class="w-100 h-120" style="min-height: 350px; border: none;"
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d762.6546618063226!2d106.71234880256128!3d10.845540299835225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529564f2b4679%3A0x92c1b5bfdc78c98!2zRlBUIEFwdGVjaCBW4bqhbiBQaMO6Yw!5e1!3m2!1svi!2s!4v1735019042205!5m2!1svi!2s"
+                                        allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form Section -->
+                <div class="col-lg-6">
+                    <h4>Contact Us</h4>
+                    <hr />
+                    <form asp-action="Contact">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Phone" class="control-label">
+                                <i class="bi bi-telephone-fill me-2 text-primary"></i> Phone
+                            </label>
+                            <input asp-for="Phone" class="form-control" placeholder="Enter phone number" />
+                            <span asp-validation-for="Phone" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Name" class="control-label">
+                                <i class="bi bi-person-fill me-2 text-primary"></i> Name
+                            </label>
+                            <input asp-for="Name" class="form-control" placeholder="Enter full name" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Comment" class="control-label">
+                                <i class="bi bi-chat-dots-fill me-2 text-primary"></i> Comment
+                            </label>
+                            <input asp-for="Comment" class="form-control" placeholder="Add a comment" />
+                            <span asp-validation-for="Comment" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Email" class="control-label">
+                                <i class="bi bi-envelope-fill me-2 text-primary"></i> Email
+                            </label>
+                            <input asp-for="Email" class="form-control" placeholder="Enter email address" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-save-fill me-2"></i> Send Message
+                            </button>
+                        </div>
+                       
+                    </form>
+                   
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+</body>
+</html>

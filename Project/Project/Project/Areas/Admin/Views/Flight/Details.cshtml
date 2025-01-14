@@ -1,0 +1,100 @@
+﻿@model Project.Models.Flight
+
+@{
+    ViewData["Title"] = "Flight Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center text-primary">@ViewData["Title"]</h1>
+    <p class="text-muted text-center">Detailed information about the flight, including ticket classes and current status.</p>
+    <hr />
+
+    <div class="row">
+        <!-- Flight Details -->
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-info text-white">
+                    <h5 class="card-title mb-0">Flight Information</h5>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-4">Flight Number</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.FlightNumber)</dd>
+
+                        <dt class="col-sm-4">Airport</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Airport.AirportName)</dd>
+
+                        <dt class="col-sm-4">Departure Time</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.DepartureTime)</dd>
+
+                        <dt class="col-sm-4">Arrival Time</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.ArrivalTime)</dd>
+
+                        <dt class="col-sm-4">Aircraft</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.Aircraft.Model)</dd>
+
+                        <dt class="col-sm-4">Flight Status</dt>
+                        <dd class="col-sm-8">@Html.DisplayFor(model => model.FlightStatus.FlightStatusName)</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ticket Class Prices -->
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white">
+                    <h5 class="card-title mb-0">Ticket Class Price</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Ticket Class</th>
+                                <th>Price</th>
+                                <th>Seats</th>
+                                <th>Seats Available</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Aircraft.Aircraft_Tickets.ToList())
+                            {
+                                <tr>
+                                    <td>@item.Ticket.ClassName</td>
+                                    <td>$ @(Model.Price * item.Ticket.Multiplier)</td>
+                                    <td>@item.Quantity</td>
+                                    <td>@item.QuantityOnHand</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Change Flight Status -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="card-title mb-0">Update Flight Status</h5>
+                </div>
+                <div class="card-body">
+                    <form asp-action="ChangeStatus" method="get" class="d-flex align-items-center">
+                        <input type="hidden" asp-for="FlightID" name="id" />
+                        <select name="statusId" class="form-select me-3" asp-items="ViewBag.ListStatus">
+                        </select>
+                        <button type="submit" class="btn btn-primary">Change Status</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to List -->
+    <div class="mt-4 text-center">
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>

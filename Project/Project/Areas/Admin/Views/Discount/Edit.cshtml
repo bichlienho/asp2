@@ -1,0 +1,91 @@
+﻿@model Project.Models.Discount
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit Discount</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="DiscountID" />
+
+            <!-- City Discount -->
+            <div class="form-group">
+                <label asp-for="CityDiscount" class="control-label">City Discount <span class="text-danger">*</span></label>
+                <input asp-for="CityDiscount" class="form-control" placeholder="Enter city discount" />
+                <span asp-validation-for="CityDiscount" class="text-danger"></span>
+            </div>
+
+            <!-- Discount Code -->
+            <div class="form-group">
+                <label asp-for="DiscountCode" class="control-label">Discount Code <span class="text-danger">*</span></label>
+                <input asp-for="DiscountCode" class="form-control" placeholder="Enter discount code" />
+                <span asp-validation-for="DiscountCode" class="text-danger"></span>
+            </div>
+
+            <!-- Discount Percent -->
+            <div class="form-group">
+                <label asp-for="DiscountPercent" class="control-label">Discount Percentage <span class="text-danger">*</span></label>
+                <input asp-for="DiscountPercent" class="form-control" type="number" placeholder="Enter discount percentage" />
+                <span asp-validation-for="DiscountPercent" class="text-danger"></span>
+            </div>
+
+            <!-- Quantity Discount -->
+            <div class="form-group">
+                <label asp-for="QuantityDiscount" class="control-label">Quantity Discount <span class="text-danger">*</span></label>
+                <input asp-for="QuantityDiscount" class="form-control" type="number" placeholder="Enter quantity discount" />
+                <span asp-validation-for="QuantityDiscount" class="text-danger"></span>
+            </div>
+
+            <!-- Description -->
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Description <span class="text-danger">*</span></label>
+                <textarea asp-for="Description" class="form-control" rows="4" placeholder="Enter discount description"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <!-- Date Range -->
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="StartDate" class="control-label">Start Date <span class="text-danger">*</span></label>
+                    <input asp-for="StartDate" class="form-control" type="date" />
+                    <span asp-validation-for="StartDate" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="EndDate" class="control-label">End Date <span class="text-danger">*</span></label>
+                    <input asp-for="EndDate" class="form-control" type="date" />
+                    <span asp-validation-for="EndDate" class="text-danger"></span>
+                </div>
+            </div>
+
+            <!-- Active Status -->
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+
+            <!-- Create Date (disabled as it's auto-generated) -->
+            <div class="form-group">
+                <label asp-for="CreateDate" class="control-label">Create Date</label>
+                <input asp-for="CreateDate" class="form-control" type="text" disabled />
+                <span asp-validation-for="CreateDate" class="text-danger"></span>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <input type="submit" value="Save Changes" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

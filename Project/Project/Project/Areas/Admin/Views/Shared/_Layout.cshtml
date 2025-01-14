@@ -1,0 +1,185 @@
+﻿<!doctype html>
+<!--
+* Bootstrap Simple Admin Template
+* Version: 2.1
+* Author: Alexis Luna
+* Website: https://github.com/alexis-luna/bootstrap-simple-admin-template
+-->
+<html lang="en">
+    <style>
+    .sidebar-header {
+        background-color: #4CAF50; /* Màu nền nổi bật (xanh lá cây) */
+        color: #ffffff; /* Màu chữ trắng */
+        padding: 20px; /* Khoảng cách trong rộng rãi */
+        text-align: center; /* Canh giữa chữ */
+        border-bottom: 2px solid #ffffff; /* Gạch dưới tạo điểm nhấn */
+        border-radius: 8px 8px 0 0; /* Góc bo mềm mại phía trên */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng nhẹ */
+    }
+
+        .sidebar-header h2 {
+            font-size: 1.8rem; /* Kích thước chữ vừa phải */
+            font-weight: bold; /* Đậm nổi bật */
+            margin: 0; /* Loại bỏ khoảng cách mặc định */
+            letter-spacing: 2px; /* Giãn chữ để tạo cảm giác hiện đại */
+            text-transform: uppercase; /* Viết hoa toàn bộ */
+            line-height: 1.2; /* Khoảng cách dòng */
+        }
+
+        .sidebar-header:hover {
+            background-color: #45a049; /* Hiệu ứng khi di chuột */
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Tăng bóng khi hover */
+        }
+
+    </style>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MANAGE ARS AIRLINE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="~/backend/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+    <link href="~/backend/vendor/fontawesome/css/solid.min.css" rel="stylesheet">
+    <link href="~/backend/vendor/fontawesome/css/brands.min.css" rel="stylesheet">
+    <link href="~/backend/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/backend/css/master.css" rel="stylesheet">
+    <link href="~/backend/vendor/flagiconcss/css/flag-icon.min.css" rel="stylesheet">
+</head>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert" style="text-align: center;">
+        <strong>
+            Notification:
+        </strong> @TempData["SuccessMessage"]
+    </div>
+}
+<body>
+    <div class="wrapper">
+        <nav id="sidebar" >
+            <div class="sidebar-header" >
+                <h2>ARS</h2>
+            </div>
+            <ul class="list-unstyled components text-secondary">
+        <li class="nav-item">
+                        <a class="nav-link" href="/admin/account/index">
+                            <span class="menu-title">Account</span>
+                            <i class="mdi mdi-home menu-icon"></i>
+                        </a>
+                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/aircraft/index">
+                        <span class="menu-title">Aircraft</span>
+                        <i class="mdi mdi-home menu-icon"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/ticket/index">
+                        <span class="menu-title">Ticket</span>
+                        <i class="mdi mdi-home menu-icon"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/aircraft_ticket/index">
+                        <span class="menu-title">Aircraft Ticket</span>
+                        <i class="mdi mdi-home menu-icon"></i>
+                    </a>
+                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/airport/index">
+                            <span class="menu-title">Airport</span>
+                            <i class="mdi mdi-home menu-icon"></i>
+                        </a>
+                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/flight/index">
+                        <span class="menu-title">Flight</span>
+                        <i class="mdi mdi-home menu-icon"></i>
+                    </a>
+                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/discount/index">
+                            <span class="menu-title">Discount </span>
+                            <i class="mdi mdi-home menu-icon"></i>
+                        </a>
+                    </li>
+       
+             
+             
+                
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/flightstatus/index">
+                        <span class="menu-title">Flight Status</span>
+                            <i class="mdi mdi-home menu-icon"></i>
+                        </a>
+                    </li>
+              
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/Booking/index">
+                        <span class="menu-title">Booking</span>
+                        <i class="mdi mdi-home menu-icon"></i>
+                    </a>
+                </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/admin/ContactUs/index">
+                            <span class="menu-title">Contact Us</span>
+                            <i class="mdi mdi-home menu-icon"></i>
+                        </a>
+                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/Aboutus/index">
+                        <span class="menu-title">About Us</span>
+                        <i class="mdi mdi-home menu-icon"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/Feedback/index">
+                        <span class="menu-title">Feedback</span>
+                        <i class="mdi mdi-home menu-icon"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/Pilot/index">
+                        <span class="menu-title">Pilots</span>
+                        <i class="mdi mdi-home menu-icon"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div id="body" >
+            <!-- navbar navigation component -->
+            <nav class="navbar navbar-expand-lg navbar-white bg-white">
+                <button type="button" id="sidebarCollapse" class="btn btn-light">
+                    <i class="fas fa-bars"></i><span></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav ms-auto">
+                        <li class="nav-item dropdown">
+                            <div class="nav-dropdown">
+                                <a href="/" id="nav1" class="nav-item nav-link dropdown-toggle text-secondary" >
+                                    <i class="fas fa-link"></i> <span>View Website</span> <i style="font-size: .8em;" ></i>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <div class="nav-dropdown">
+                                <a href="#" id="nav2" class="nav-item nav-link dropdown-toggle text-secondary" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-user"></i> <span>@User.Identity.Name</span> <i style="font-size: .8em;" class="fas fa-caret-down"></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- end of navbar navigation -->
+           @RenderBody()
+        </div>
+    </div>
+    <script src="~/backend/vendor/jquery/jquery.min.js"></script>
+    <script src="~/backend/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/backend/vendor/chartsjs/Chart.min.js"></script>
+    <script src="~/backend/js/dashboard-charts.js"></script>
+    <script src="~/backend/js/script.js"></script>
+</body>
+@RenderSection("Scripts", required: false)
+
+</html>

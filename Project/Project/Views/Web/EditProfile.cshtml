@@ -1,0 +1,99 @@
+﻿@model Project.Models.Account
+@{
+    ViewData["Title"] = "Edit Profile";
+    Layout = "~/Views/Frontend.cshtml";
+}
+
+<section class="banner">
+    <style>
+        .banner-wrapper {
+            position: relative;
+        }
+
+            .banner-wrapper img {
+                width: 100%;
+                height: auto;
+            }
+
+        .banner-content {
+            position: absolute;
+            top: 50%;
+            left: 20%;
+            transform: translate(-50%);
+            text-align: center;
+            color: #fff;
+        }
+    </style>
+    <div class="container">
+        <div class="banner-wrapper">
+            <img style="width:1150px;height:800px" src="~/frontend/img/reg.jpg" alt="">
+        </div>
+    </div>
+</section>
+<div class="container mt-5">
+    <h2 class="text-center">Edit Profile </h2>
+    <form asp-action="EditProfile" asp-controller="Web" method="post" enctype="multipart/form-data" novalidate>
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="Id" />
+        <div class="row">
+            <div class="col-md-3">
+                <div class="text-center">
+                    <label for="ImageFile" style="cursor: pointer;">
+                        <img src="~/images/@(Model?.Avatar ?? "default-avatar.png")" alt="UserAvatar" class="rounded-circle img-fluid" width="200" />
+                        <input type="file" name="ImageFile" class="d-none" />
+                        <i class="fa fa-camera camera-icon"></i>
+                    </label>
+                    <div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Personal Information</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="FullName"><strong>Full Name</strong></label>
+                            <input asp-for="Fullname" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="Email"><strong>Email</strong></label>
+                            <input asp-for="Email" class="form-control" readonly />
+                        </div>
+                        <div class="mb-3">
+                            <label for="PhoneNumber"><strong>Phone Number</strong></label>
+                            <input asp-for="PhoneNumber" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label><strong>Gender</strong></label>
+                            <div>
+                                <label class="me-3">
+                                    <input type="radio" name="Gender" value="true" @(Model?.Gender == true ? "checked" : "") /> Male
+                                </label>
+                                <label>
+                                    <input type="radio" name="Gender" value="false" @(Model?.Gender == false ? "checked" : "") /> Female
+                                </label>
+
+
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Address"><strong>Address</strong></label>
+                            <input asp-for="Address" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="Dob"><strong>Date of Birth</strong></label>
+                            <input asp-for="Dob" class="form-control" type="date"
+                                   value="@(Model?.Dob != null ? Model.Dob.ToString("yyyy-MM-dd") : string.Empty)" />
+                        </div>
+
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

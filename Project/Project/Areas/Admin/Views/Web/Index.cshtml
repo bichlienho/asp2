@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Bao bọc phần nội dung vào div để dễ dàng căn chỉnh -->
+<div class="admin-container">
+    <h1 class="header-title">Welcome To Admin</h1>
+    <h2 class="header-subtitle">Backend</h2>
+    <h3 class="header-subtitle">AIRLINES RESERVATION</h3>
+</div>
+
+<style>
+    /* Phần container để chứa tiêu đề */
+    .admin-container {
+        display: flex; /* Dùng flex để canh giữa nội dung */
+        flex-direction: column; /* Xếp chữ theo cột */
+        justify-content: center; /* Canh giữa theo chiều dọc */
+        align-items: center; /* Canh giữa theo chiều ngang */
+        text-align: center; /* Canh giữa tất cả văn bản */
+        color: #fff; /* Màu chữ trắng */
+        padding: 40px; /* Khoảng cách trong container */
+        border-radius: 10px; /* Bo góc cho container */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Bóng đổ */
+        background-color: rgba(34, 139, 34, 0.8); /* Nền xanh lá */
+        width: 80%; /* Giảm chiều rộng container từ 100% xuống 80% */
+        max-width: 1200px; /* Giới hạn chiều rộng tối đa */
+        height: 400px; /* Tăng chiều cao */
+        margin: 50px auto; /* Canh giữa container */
+    }
+
+    /* Tiêu đề chính */
+    .header-title {
+        font-size: 3.5rem; /* Tăng cỡ chữ cho tiêu đề chính */
+        font-weight: bold;
+        margin: 0;
+        color: #fff; /* Màu chữ trắng */
+    }
+
+    /* Tiêu đề phụ */
+    .header-subtitle {
+        font-size: 1.8rem; /* Tăng cỡ chữ cho tiêu đề phụ */
+        font-weight: normal;
+        color: #d3ffd3; /* Màu chữ nhẹ nhàng sáng, phù hợp với nền xanh lá */
+        margin: 10px 0;
+    }
+</style>

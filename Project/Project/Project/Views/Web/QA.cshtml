@@ -1,0 +1,184 @@
+﻿@{
+    ViewData["Title"] = "QA";
+    Layout = "~/Views/Frontend.cshtml";
+}
+<!-- start banner Area -->
+<section class="banner-area relative">
+    <div style="position: absolute;top:10;left:10;width: 90%;height: 80%;background-image: url('~/frontend/img/Banner1.png');background-position: center;z-index: 1;opacity: 0.7; " class="overlay "></div>
+    <div class="container">
+        <div class="row fullscreen align-items-center justify-content-between">
+            <div class="col-lg-6 col-md-6 banner-left">
+                <h6 class="text-black"><img style="width: 270px;" src="~/frontend/img/c1.png" alt="" title="" /></h6>
+                <h1 class="text-white">Vietnam Domestic Flights</h1>
+                <p class="text-white">
+                    Bringing Passengers a good and happy flight with a great experience of ARS Airlines
+                </p>
+                <a href="/flight" class="primary-btn text-uppercase">Let's Go</a>
+            </div>
+
+          
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+<style>
+/* General container styling */
+#feedback-form {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background: linear-gradient(to bottom right, #ffffff, #f2f2f2);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Form title styling */
+#feedback-form h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Form fields */
+#feedback-form .form-group {
+    margin-bottom: 20px;
+}
+
+#feedback-form .form-group label {
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 8px;
+    display: inline-block;
+    font-size: 14px;
+}
+
+#feedback-form .form-group input,
+#feedback-form .form-group select,
+#feedback-form .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Form input focus state */
+#feedback-form .form-group input:focus,
+#feedback-form .form-group textarea:focus,
+#feedback-form .form-group select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Textarea */
+#feedback-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Form button */
+#feedback-form .form-actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#feedback-form button {
+    background-color: #007bff;
+    color: #fff;
+    font-size: 18px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 50px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#feedback-form button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+#feedback-form button:active {
+    transform: scale(1);
+}
+
+/* Success message */
+.success-message {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #28a745;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+    .feedback-container {
+        padding: 20px;
+        background-color: #f9f9f9; /* Light gray background */
+        border-radius: 8px; /* Smooth corners */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    }
+
+        .feedback-container img {
+            max-height: 350px; /* Prevent overly large images */
+            object-fit: cover; /* Maintain aspect ratio and crop */
+        }
+
+    h3.text-primary {
+        font-size: 1.8rem;
+    }
+
+    p {
+        line-height: 1.6; /* Better readability */
+    }
+
+    .row {
+        border-bottom: 1px solid #ddd; /* Divider between items */
+        padding-bottom: 20px;
+    }
+
+        .row:last-child {
+            border-bottom: none;
+        }
+
+}
+</style>
+
+
+<!-- Main Q&A Section -->
+<div class="container feedback-container">
+    <h1 class="text-center mb-4">Q&A</h1>
+    @foreach (var dc in Model)
+    {
+        <!-- Two Columns Section -->
+        <div class="row mb-5 align-items-center">
+            <!-- Image Section -->
+            <div class="col-lg-6 text-center">
+                <img src="@Url.Content("~/images/" + dc.Image)"
+                     alt="Feedback Image"
+                     class="img-fluid rounded shadow" />
+            </div>
+
+            <!-- Text Section -->
+            <div class="col-lg-6">
+                <h3 class="text-primary mb-3">@dc.Title</h3>
+                <p class="fw-bold mb-2">Question: <span class="fw-normal">@dc.Description</span></p>
+                <p class="fw-bold mb-2">Answer: <span class="fw-normal">@dc.DescriptionAnswer</span></p>
+                <p class="text-muted">@dc.DescriptionAnswer</p>
+            </div>
+        </div>
+    }
+</div>
+
+

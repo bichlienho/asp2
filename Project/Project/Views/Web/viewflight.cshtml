@@ -1,0 +1,118 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Frontend.cshtml";
+}
+
+<!-- start banner Area -->
+<section class="banner-area relative">
+    <div style="position: absolute;top: 10;left: 10;width: 90%;height: 80%;background-image: url('~/frontend/img/anhn.jpg');background-position: center;z-index: 1;opacity: 0.7; " class="overlay "></div>
+    <div class="container">
+        <div class="row fullscreen align-items-center justify-content-between">
+            <div class="col-lg-6 col-md-6 banner-left">
+                <h6 class="text-black"><img style="width: 270px;" src="~/frontend/img/c1.png" alt="" title="" /></h6>
+                <h1 class="text-white">Vietnam Domestic Flightsl</h1>
+                <p class="text-white">
+                    Bringing Passengers a good and happy flight with a great experience of ARS Airlines
+                </p>
+                <a href="#" class="primary-btn text-uppercase">Let's Go</a>
+            </div>
+
+        </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+<div class="col-lg-12 col-md-6">
+    <!-- Danh sách Booking -->
+    <div class="booking-list">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <i style="font-size: 20px;color:blue" class="fa-solid fa-plane"></i>
+                    <h5 style="font-size: 16px;color:yellowgreen">Fly of day 23/03/2024</h5>
+
+                </div>
+                <div class="col-lg-3">
+                </div>
+
+            </div>
+        </div>
+        <br />
+        <br />
+        <div style="font-size: 36px;color:forestgreen;font-weight:bold; text-align:center;margin:30 30 "> List of domestic flights in Vietnam </div>
+        <br />
+        <br />
+        <br />
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Flight</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Departure Date</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Price</th>
+                    <th>Type Seat</th>
+                    <th>Status</th>
+                    <th>Select flight</th>
+                </tr>
+            </thead>
+            <tbody id="bookingList">
+                <tr>
+                    <td>ARS</td>
+                    <td>HCM</td>
+                    <td>HN</td>
+                    <td>23/03/2024</td>
+                    <td>7:00</td>
+                    <td>9:00</td>
+                    <td>$30</td>
+                    <td>VIP</td>
+                    <td>Pending approval</td>
+                    <td>
+                        <label>Book Ticket</label>
+                        <input type="radio" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>ARS</td>
+                    <td>HCM</td>
+                    <td>HN</td>
+                    <td>23/03/2024</td>
+                    <td>7:00</td>
+                    <td>9:00</td>
+                    <td>$30</td>
+                    <td>VIP</td>
+                    <td>Pending approval</td>
+                    <td>
+                        <label>Book Ticket</label>
+                        <input type="radio" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>ARS</td>
+                    <td>HCM</td>
+                    <td>HN</td>
+                    <td>23/03/2024</td>
+                    <td>7:00</td>
+                    <td>9:00</td>
+                    <td>$30</td>
+                    <td>VIP</td>
+                    <td>Pending approval</td>
+                    <td>
+                        <label>Book Ticket</label>
+                        <input type="radio" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-lg-3 text-right">
+        <button type="submit" id="form-submit" class="btn"
+                style="text-align:center;font-size: 16px;cursor: pointer; background-color: aquamarine;border-color:black; width: 100%;padding: 10px;font-size: 16px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box;">
+            <a href="/booking">Next to Payment</a>
+        </button>
+    </div>
+</div>
+

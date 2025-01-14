@@ -1,0 +1,255 @@
+﻿@model Project.Models.DiscountsAndPilotsViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Frontend.cshtml";
+}
+<!-- start banner Area -->
+<section class="banner-area relative">
+    <div style="position: absolute;top:10;left:10;width: 90%;height: 80%;background-image: url('~/frontend/img/Banner1.png');background-position: center;z-index: 1;opacity: 0.7; " class="overlay "></div>
+    <div class="container">
+        <div class="row fullscreen align-items-center justify-content-between">
+            <div class="col-lg-6 col-md-6 banner-left">
+                <h6 class="text-black"><img style="width: 270px;" src="~/frontend/img/c1.png" alt="" title="" /></h6>
+                <h1 class="text-white">Vietnam Domestic Flights</h1>
+                <p class="text-white">
+                    Bringing Passengers a good and happy flight with a great experience of ARS Airlines
+                </p>
+                <a href="/flight" class="primary-btn text-uppercase">Let's Go</a>
+            </div>
+
+           
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+@* thong tin khuyen mai *@
+
+<!-- start features Area -->
+<section class="features-area section_gap" style="background-color:honeydew; margin-top: -5px;">
+    <div class="row features-inner">
+        <!-- single features -->
+
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="single-features" style="text-align: center; padding: 20px;border: 1px solid #ddd; border-radius: 10px;background-color:blanchedalmond;">
+                <div class="f-icon">
+                    <div class="row">
+                        <style>
+                            /* Định dạng chung cho từng destination */
+                            .single-destinations {
+                                border: 1px solid #ddd; /* Đường viền cho từng ô */
+                                border-radius: 5px;
+                                overflow: hidden;
+                                background-color: #fff;
+                                margin-bottom: 30px; /* Khoảng cách giữa các ô */
+                                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng nổi */
+                            }
+
+                                .single-destinations .thumb {
+                                    position: relative;
+                                    width: 100%;
+                                    height: 200px; /* Chiều cao cố định cho ảnh */
+                                    overflow: hidden;
+                                }
+
+                                    .single-destinations .thumb img {
+                                        width: 100%;
+                                        height: 100%;
+                                        object-fit: cover; /* Đảm bảo ảnh phủ kín ô mà không bị méo */
+                                        object-position: center; /* Căn giữa ảnh */
+                                    }
+
+                                .single-destinations .details {
+                                    padding: 15px; /* Khoảng cách giữa chữ và viền */
+                                    text-align: center; /* Căn giữa chữ */
+                                }
+
+                            .details p {
+                                font-size: 14px;
+                                color: #666;
+                                margin: 10px 0; /* Khoảng cách trên dưới */
+                            }
+
+                            .details ul {
+                                padding: 0;
+                                list-style: none;
+                                margin: 0;
+                            }
+
+                                .details ul li {
+                                    font-size: 14px;
+                                    margin-bottom: 10px;
+                                }
+
+                                    .details ul li span {
+                                        display: inline-block;
+                                    }
+
+                            .price-btn {
+                                text-decoration: none;
+                                font-weight: bold;
+                                transition: color 0.3s ease;
+                            }
+
+                                .price-btn:hover {
+                                    color: #ff4500;
+                                }
+                        </style>
+
+                        <div class="row">
+                            @foreach (var dc in Model.Discounts)
+                            {
+                                <div class="col-lg-3 col-md-6 col-sm-12 d-flex">
+                                    <div class="single-destinations">
+                                        <div class="thumb">
+                                            <img src="@Url.Content("~/images/" + dc.Image)" alt="Discount Image" />
+                                        </div>
+                                        <div class="details">
+                                            <p>@dc.Description</p>
+                                            <ul class="package-list">
+                                                <li class="d-flex justify-content-between align-items-center">
+                                                    <span style="color:red;font-size:20px;font-weight:bold">@dc.DiscountPercent %</span>
+                                                    <span style="color:blue;font-size:20px;font-weight:bold">Group 2 person up</span>
+                                                </li>
+                                                <li class="d-flex justify-content-between align-items-center">
+                                                    <span style="color:forestgreen;font-size:20px;font-weight:bold">Voucher</span>
+                                                    <span style="color:blue;font-size:20px;font-weight:bold">@dc.DiscountCode</span>
+                                                </li>
+                                                <li class="d-flex justify-content-between align-items-center">
+                                                    <span>@dc.StartDate.ToString("MM/dd/yyyy")</span>
+                                                    <span>@dc.EndDate.ToString("MM/dd/yyyy")</span>
+                                                </li>
+                                                <li class="d-flex justify-content-between align-items-center">
+                                                    <span>Booking Now</span>
+                                                    <a href="/flight" class="price-btn" style="color:red;font-size:20px;font-weight:bold">
+                                                        <i class="fa-solid fa-plane-departure text-primary"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- end features Area -->
+@* tìm kiếm chuyến bay *@
+<!-- About Start -->
+<div class="container-xxl py-5" style=" background-color: seashell;padding: 40px 0;">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+                <div class="row g-3">
+                    <div class="col-6 text-start">
+                        <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s" src="~/frontend/img/ghehangthuonggia.png">
+                    </div>
+                    <div class="col-6 text-start">
+                        <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.3s" src="~/frontend/img/hangthuong.png" style="margin-top: 25%;">
+                    </div>
+                    <div class="col-6 text-end">
+                        <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.5s" src="~/frontend/img/hangvip.png">
+                    </div>
+                    <div class="col-6 text-end">
+                        <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.7s" src="~/frontend/img/khachngoicho.png">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h5 class="section-title ff-secondary text-start text-primary fw-normal">About Us</h5>
+                <h1 class="mb-4">Welcome to <i class="fa-solid fa-plane text-primary me-2"></i>ARS AIRLINES</h1>
+                <p class="mb-4">ARS Airlines is one of the great choices for passengers when traveling between cities. ARS offers a variety of seats, from regular seats to premium options such as VIP and business class, to meet the needs of all customers. Regular seats are simply designed but still ensure comfort, helping passengers have a pleasant flight. ARS VIP and business class seats provide a superior experience with spacious space, high-quality materials and attentive service, suitable for customers who require luxury and comfort.</p>
+                <p class="mb-4">In addition, at ARS airports, passengers will enjoy a comfortable waiting space. The waiting areas are modernly designed, with airy, cool spaces, helping passengers relax before boarding the plane. ARS airport services always focus on the convenience and comfort of customers, making your trip easier and more enjoyable than ever.</p>
+                <a class="btn btn-primary py-3 px-5 mt-2" href="/about">Read More</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+@* những câu hỏi thường gặp *@
+<!-- Service Start -->
+<div class="container-xxl py-5" style=" background-color: beige;padding: 40px 0;">
+
+    <div class="container">
+        <div class="row g-4">
+            @foreach (var pilot in Model.Pilots)
+            {
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-item text-center rounded overflow-hidden">
+                        <div class="rounded-circle overflow-hidden m-4">
+                            <img class="img-fluid" src="@Url.Content("~/images/" + pilot.Image)" alt="Pilot Image" />
+                        </div>
+                        <h5 class="mb-0">@pilot.Name</h5>
+                        <small>@pilot.Demo</small>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+<!-- Service End -->
+<!-- slide giữa -->
+<div class="container-xxl " style="background-color:#5ce1e6; ">
+    <div class="container">
+        <div>
+            <img style="width: 100%, height:50%" src="~/frontend/img/bn1.png" />
+        </div>
+
+    </div>
+</div>
+<!-- slide giữa End -->
+<!-- Team Start -->
+<div class="container-xxl pt-5 pb-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="team-item text-center rounded overflow-hidden">
+                    <div class="rounded-circle overflow-hidden m-4">
+                        <img class="img-fluid" src="~/frontend/img/ct1.jpg" alt="">
+                    </div>
+                    <h5 class="mb-0">Captain</h5>
+                    <small>10 years experience</small>
+
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="team-item text-center rounded overflow-hidden">
+                    <div class="rounded-circle overflow-hidden m-4">
+                        <img class="img-fluid" src="~/frontend/img/cp1.jpg" alt="">
+                    </div>
+                    <h5 class="mb-0">Co-pilot</h5>
+                    <small>5 years experiencen</small>
+
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="team-item text-center rounded overflow-hidden">
+                    <div class="rounded-circle overflow-hidden m-4">
+                        <img class="img-fluid" src="~/frontend/img/tv1.jpg" alt="">
+                    </div>
+                    <h5 class="mb-0">Chief Flight</h5>
+                    <small>6 years experiencen</small>
+
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                <div class="team-item text-center rounded overflow-hidden">
+                    <div class="rounded-circle overflow-hidden m-4">
+                        <img class="img-fluid" src="~/frontend/img/tv2.jpg" alt="">
+                    </div>
+                    <h5 class="mb-0">Flight attendant</h5>
+                    <small>4 years experiencen</small>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Team End -->

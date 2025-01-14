@@ -1,0 +1,133 @@
+﻿@model Project.Models.Flight
+@{
+    ViewData["Title"] = "Flight Add";
+}
+
+<div class="content">
+    <div class="container">
+        <div class="page-title">
+            <h3>Add Flight</h3>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">All form elements</div>
+                    <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        @if(ViewBag.error != null)
+                        {
+                            <h5 style="color:red">@ViewBag.error</h5>
+                        }
+                        <form asp-action="PostAdd" asp-controller="Flight" asp-area="Admin" method="post">
+                            @Html.AntiForgeryToken()
+                            <div asp-validation-summary="ModelOnly" class="text-bg-danger"></div>
+
+                            <!-- Flight Number -->
+                            <div class="mb-3 row">
+                                <label class="col-sm-2">Flight Number <span class="text-danger">*</span></label>
+                                <div class="col-sm-10">
+                                    <input asp-for="FlightNumber" class="form-control" />
+                                    <span asp-validation-for="FlightNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <!-- Choose Origin Airport -->
+                            <div class="mb-3 row">
+                                <label class="col-sm-2">Choose From Airport <span class="text-danger">*</span></label>
+                                <div class="col-sm-10">
+                                    <select asp-for="FromAirportID" class="form-control" asp-items="ViewBag.Airports">
+                                        <option value="">---select---</option>
+                                    </select>
+                                    <span asp-validation-for="FromAirportID" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <!-- Choose Destination Airport -->
+                            <div class="mb-3 row">
+                                <label class="col-sm-2">Choose To Airport <span class="text-danger">*</span></label>
+                                <div class="col-sm-10">
+                                    <select asp-for="ToAirportID" class="form-control" asp-items="ViewBag.Airports">
+                                        <option value="">---select---</option>
+                                    </select>
+                                    <span asp-validation-for="ToAirportID" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <!-- Choose Status Airport -->
+                          @*   <div class="mb-3 row">
+                                <label class="col-sm-2">Choose Status Airport</label>
+                                <div class="col-sm-10">
+                                    <select asp-for="FlightStatusId" class="form-control" asp-items="ViewBag.Status">
+                                        <option value="">---select---</option>
+                                    </select>
+                                    <span asp-validation-for="FlightStatusId" class="text-danger"></span>
+                                </div>
+                            </div>
+                         *@
+                            <div class="mb-3 row">
+                                <label class="col-sm-2">Choose Aircraft <span class="text-danger">*</span></label>
+                                <div class="col-sm-10">
+                                    <select asp-for="AircraftId" class="form-control" asp-items="ViewBag.Aircraft">
+                                        <option value="">---Select---</option>
+                                    </select>
+                                    <span asp-validation-for="AircraftId" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <!-- price -->
+                            <div class="mb-3 row">
+                                <label class="col-sm-2">Price <span class="text-danger">*</span></label>
+                                <div class="col-sm-10">
+                                    <input asp-for="Price" class="form-control" />
+                                    <span asp-validation-for="Price" class="text-danger"></span>
+                                </div>
+                            </div>
+
+
+                            <!-- Departure Time -->
+                            <div class="mb-3 row">
+                                <label class="col-sm-2">Departure Time <span class="text-danger">*</span></label>
+                                <div class="col-sm-10">
+                                    <input asp-for="DepartureTime" class="form-control" type="datetime-local" />
+                                    <span asp-validation-for="DepartureTime" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <!-- Arrival Time -->
+                            <div class="mb-3 row">
+                                <label class="col-sm-2">Arrival Time <span class="text-danger">*</span></label>
+                                <div class="col-sm-10">
+                                    <input asp-for="ArrivalTime" class="form-control" type="datetime-local" />
+                                    <span asp-validation-for="ArrivalTime" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <!-- Is Active -->
+                            <div class="mb-3 row">
+                                <label class="col-sm-2">Is Active</label>
+                                <div class="col-sm-10">
+                                    <input type="checkbox" class="form-check-input" asp-for="IsActive" />
+                                    <label class="form-check-label" for="IsActive">@Html.DisplayNameFor(model => model.IsActive)</label>
+                                </div>
+                            </div>
+
+
+
+                            <!-- Save and Cancel Buttons -->
+                            <div class="mb-3 row">
+                                <div class="col-sm-4 offset-sm-2">
+                                    <button type="submit" class="btn btn-primary mb-2">
+                                        <i class="fas fa-save"></i> Save
+                                    </button>
+                                    <a asp-action="Index" class="btn btn-secondary mb-2">
+                                        <i class="fas fa-times"></i> Cancel
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

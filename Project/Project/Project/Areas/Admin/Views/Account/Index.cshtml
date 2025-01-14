@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Project.Models.Account>
+@{
+    ViewData["Title"] = "Account List";
+}
+<style>
+    .table-responsive {
+        overflow-x: auto; /* Hiển thị thanh cuộn ngang khi cần */
+    }
+
+    .table {
+        white-space: nowrap; /* Không ngắt dòng nội dung bảng */
+    }
+
+</style>
+<div class="content">
+    <div class="container">
+        <div class="page-title">
+            <h3 style="color:blue;font-weight:bold;text-align:center">List User's Account</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="card">
+
+                    <div class="card-body">
+                        <p class="card-title"></p>
+                        <!-- Container for horizontal scrolling -->
+                        <div class="table-responsive">
+                            <table class="table table-hover"
+                                   id="dataTables-example"
+                                   width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>UserID</th>
+                                        <th>Role</th>
+                                        <th>FullName </th>
+                                        <th>Email </th>
+                                        <th>PhoneNumber</th>
+                                        <th>Address</th>
+                                        <th>IsActive</th>
+                                        <th>CreateDate </th>
+                                        <th>Dob </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <th>@item.Id</th>
+                                            <td>@item.Username</td>
+                                            <td>@item.Fullname</td>
+                                            <td>@item.Email</td>
+                                            <td>@item.PhoneNumber</td>
+                                            <td>@item.Address</td>
+                                            <td>
+                                                @if (item.IsActive)
+                                                {
+                                                    <i class="fa-solid fa-square-check"></i>
+                                                }
+                                                else
+                                                {
+                                                    <i class="fa-solid fa-square-xmark"></i>
+                                                }
+                                            </td>
+                                            <td>@item.CreateDate</td>
+                                            <td>@item.Dob</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- End of container -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

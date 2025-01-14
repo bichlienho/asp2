@@ -1,0 +1,134 @@
+﻿@model Project.Models.Discount
+@{
+    ViewData["Title"] = "Discount Add";
+}
+<div class="content">
+    <div class="container">
+        <div class="page-title">
+            <h3>Add Discount</h3>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">All form elements</div>
+                    <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <form asp-action="PostAdd" asp-controller="Discount" asp-area="Admin" method="post" enctype="multipart/form-data" novalidate>
+                            @Html.AntiForgeryToken()
+                            <div asp-validation-summary="ModelOnly" class="text-bg-danger"></div>
+
+                            <div class="line"></div>
+                            <br />
+                            <div class="mb-3 row">
+                                <label class="col-sm-2">
+                                    Discount City
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="col-sm-10">
+                                    <input asp-for="CityDiscount" class="form-control" />
+                                    <span asp-validation-for="CityDiscount" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label class="col-sm-2">
+                                    Discount Code
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="col-sm-10">
+                                    <input asp-for="DiscountCode" class="form-control" />
+                                    <span asp-validation-for="DiscountCode" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                            <br />
+                            <div class="mb-3 row">
+                                <label class="col-sm-2">
+                                    DiscountPercent
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="col-sm-10">
+                                    <input asp-for="DiscountPercent" class="form-control" />
+                                    <span asp-validation-for="DiscountPercent" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                            <br />
+                            <div class="mb-3 row">
+                                <label class="col-sm-2">
+                                    QuantityDiscount
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="col-sm-10">
+                                    <input asp-for="QuantityDiscount" class="form-control" />
+                                    <span asp-validation-for="QuantityDiscount" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                            <br />
+                            <div class="mb-3 row">
+                                <label class="col-sm-2">
+                                    Description
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <div class="col-sm-10">
+                                    <input asp-for="Description" class="form-control" />
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                            <br />
+                            <div class="mb-3 row">
+                                <label asp-for="ImageFile" class="col-sm-2">Image</label>
+                                <div class="col-sm-10">
+                                    <input asp-for="ImageFile" type="file" class="form-control" />
+                                    <span asp-validation-for="ImageFile" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                            <br />
+                            <div class="mb-3 row">
+                                <label class="col-sm-2">StartDate</label>
+                                <div class="col-sm-10">
+                                    <input asp-for="StartDate" class="form-control" />
+                                    <span asp-validation-for="StartDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                            <br />
+                            <div class="mb-3 row">
+                                <label class="col-sm-2">EndDate</label>
+                                <div class="col-sm-10">
+                                    <input asp-for="EndDate" class="form-control" />
+                                    <span asp-validation-for="EndDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                            <br />
+                            <div class="mb-3 row">
+                                <label class="col-sm-2">IsActive</label>
+                                <div class="col-sm-10">
+                                    <input type="checkbox" class="form-check-input" asp-for="IsActive" />@Html.DisplayNameFor(model => model.IsActive)
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                            <br />
+
+
+                            <div class="mb-3 row">
+                                <div class="col-sm-4 offset-sm-2">
+
+                                    <button type="submit" class="btn btn-primary mb-2">
+                                        <i class="fas fa-save"></i> Save
+                                    </button>
+                                    <a asp-action="index" class="btn btn-secondary mb-2">
+                                        <i class="fas fa-times"></i> Cancel
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

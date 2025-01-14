@@ -1,0 +1,79 @@
+﻿@model List<Project.Models.Flight>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Frontend.cshtml";
+}
+
+<!-- start banner Area -->
+<section class="banner-area relative">
+    <div style="position: absolute;top: 10;left: 10;width: 90%;height: 80%;background-image: url('~/frontend/img/anhn.jpg');background-position: center;z-index: 1;opacity: 0.7; " class="overlay "></div>
+    <div class="container">
+        <div class="row fullscreen align-items-center justify-content-between">
+            <div class="col-lg-6 col-md-6 banner-left">
+                <h6 class="text-black"><img style="width: 270px;" src="~/frontend/img/c1.png" alt="" title="" /></h6>
+                <h1 class="text-white">Vietnam Domestic Flightsl</h1>
+                <p class="text-white">
+                    Bringing Passengers a good and happy flight with a great experience of ARS Airlines
+                </p>
+                <a href="#" class="primary-btn text-uppercase">Let's Go</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+<div class="col-lg-12 col-md-6">
+
+
+    <br />
+
+    <!-- Danh sách Booking -->
+    <!-- Hiển thị thông báo khi không tìm thấy chuyến bay -->
+    @if (!Model.Any())
+    {
+        <div class="alert alert-warning" role="alert">
+            No flights found with Flight Number: "@ViewData["searchTerm"]"
+        </div>
+    }
+
+
+    <!-- Bảng chuyến bay -->
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Flight Number</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Any())
+            {
+                @foreach (var flight in Model)
+                {
+                    <tr>
+                        <td>@flight.FlightNumber</td>
+                        <td>@flight.Airport?.AirportName</td>
+                        <td>@flight.Airport?.City</td>
+                        <td>@flight.DepartureTime.ToString("g")</td>
+                        <td>@flight.ArrivalTime.ToString("g")</td>
+                        <td>@flight.Price.ToString("C")</td>
+                        <td>
+                            <a asp-action="Add" asp-controller="Cart" asp-route-flightId="@flight.FlightID">Booking</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="7" class="text-center">No flights found for "@ViewData["searchTerm"]".</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

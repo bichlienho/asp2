@@ -1,0 +1,201 @@
+﻿@model List<Project.Models.Discount>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Frontend.cshtml";
+}
+
+<style>
+    /* General Styling */
+    .destinations-area {
+        padding: 60px 0;
+        background-color: #f4f8fb;
+    }
+
+    .discount-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .discount-card {
+        background-color: #fff;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+    }
+
+        .discount-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+    .discount-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-bottom: 2px solid #e1e1e1;
+    }
+
+    .discount-info {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .discount-title {
+        font-size: 1.5em;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: #2a2a2a;
+    }
+
+    .discount-description {
+        font-size: 1em;
+        color: #666;
+        margin-bottom: 15px;
+    }
+
+    .discount-price {
+        font-size: 1.25em;
+        font-weight: 700;
+        color: #e63946;
+        margin-bottom: 10px;
+    }
+
+    .discount-dates {
+        font-size: 0.95em;
+        color: #888;
+        margin-bottom: 15px;
+    }
+
+    .discount-percent {
+        font-size: 1.5em;
+        font-weight: 800;
+        color: #e63946;
+        margin-bottom: 15px;
+    }
+
+    .discount-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #f9f9f9;
+        border-top: 1px solid #e1e1e1;
+    }
+
+        .discount-actions a {
+            color: #007bff;
+            font-size: 1em;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+            .discount-actions a:hover {
+                color: #0056b3;
+            }
+
+        .discount-actions .price-btn {
+            background-color: #e63946;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1em;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
+
+            .discount-actions .price-btn:hover {
+                background-color: #d62839;
+            }
+
+    .about-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(80%);
+    }
+</style>
+
+<!-- Start banner Area -->
+<section class="about-banner relative">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <img src="~/frontend/img/anhn.jpg" alt="Banner Image" />
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+<!-- Start hot-deal Area -->
+<section class="hot-deal-area section-gap">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-70 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">Today’s Hot Deals</h1>
+                    <p>Save on flights with <em style="color:#007bff;font-size:30px;">ARS!</em> Up to <em style="color:#e63946;font-size:50px;font-weight:700">30%</em> off for groups of 2 or more. Book now to enjoy great deals! <em style="color:#007bff;font-size:20px;">THE MORE YOU GO, THE MORE YOU SAVE</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End hot-deal Area -->
+<!-- Start destinations Area -->
+<section class="destinations-area">
+    <div class="container">
+        <div class="discount-grid">
+            @foreach (var dc in Model)
+            {
+                <div class="discount-card">
+                    <img class="discount-image" src="@Url.Content("~/images/" + dc.Image)" alt="Discount Image" />
+                    <div class="discount-info">
+                        <h3 class="discount-title">@dc.Description</h3>
+                        <p class="discount-percent">@dc.DiscountPercent% OFF</p>
+                        <p class="discount-dates">From: @dc.StartDate To: @dc.EndDate</p>
+                        <div class="discount-actions">
+                            <a href="#" id="wishlistButton-@dc.QuantityDiscount" class="wishlist">
+                                <i class="lnr lnr-heart"></i> Wishlist (<span id="ItemCount-@dc.QuantityDiscount">0</span>)
+                            </a>
+                        </div>
+                    </div>
+                    <a href="/flight" class="price-btn">
+                        Book Now <i class="fa-solid fa-plane-departure"></i>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Event delegation for handling all wishlist button clicks
+        $('.wishlist').on('click', function (event) {
+            event.preventDefault(); // Prevent the default action of the anchor tag
+
+            // Get the clicked button's ID and extract the unique part (QuantityDiscount value)
+            let buttonId = $(this).attr('id');
+            let uniqueId = buttonId.split('-')[1]; // Assuming IDs are in the format wishlistButton-<uniqueId>
+
+            // Get the current count from the associated span
+            let currentCount = parseInt($('#ItemCount-' + uniqueId).text());
+
+            // Increment the count
+            currentCount += 1;
+
+            // Update the span with the new count
+            $('#ItemCount-' + uniqueId).text(currentCount);
+        });
+    });
+</script>
+
+
+<!-- End destinations Area -->

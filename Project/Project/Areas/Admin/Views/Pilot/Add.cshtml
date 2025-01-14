@@ -1,0 +1,123 @@
+﻿@model Project.Models.Pilot
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <form asp-action="Postadd" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label font-weight-bold">
+                        Name <span class="text-danger">*</span>
+                    </label>
+                    <input asp-for="Name" class="form-control" placeholder="Enter name" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Demo" class="control-label font-weight-bold">
+                        Demo <span class="text-danger">*</span>
+                    </label>
+                    <input asp-for="Demo" class="form-control" placeholder="Enter demo" />
+                    <span asp-validation-for="Demo" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ImageFile" class="control-label font-weight-bold"></label>
+                    <input asp-for="ImageFile" class="form-control" type="file" />
+                    <span asp-validation-for="ImageFile" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <a asp-action="Index" class="text-decoration-none text-primary">Back to List</a>
+    </div>
+</div>
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f7fa;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 100%;
+        margin-top: 50px;
+        padding: 15px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-size: 1rem;
+        margin-bottom: 8px;
+        display: inline-block;
+        color: #333;
+    }
+
+    input.form-control {
+        font-size: 1rem;
+        height: 40px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        padding-left: 12px;
+        transition: border-color 0.3s;
+    }
+
+        input.form-control:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+    input[type="file"].form-control {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-radius: 5px;
+        border: none;
+        padding: 12px;
+        font-size: 1.1rem;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .text-center a {
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        color: #007bff;
+        transition: color 0.2s;
+    }
+
+        .text-center a:hover {
+            color: #0056b3;
+        }
+
+    .alert-danger {
+        font-size: 0.9rem;
+        margin-top: 15px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+</style>

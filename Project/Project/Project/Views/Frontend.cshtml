@@ -1,0 +1,261 @@
+﻿<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="img/fav.png">
+	<!-- Author Meta -->
+	<meta name="author" content="colorlib">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>ARS AIRLINE VIET NAM</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+	<!-- Thêm Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+	<!--CSS============================================= -->
+	<link rel="stylesheet" href="~/frontend/css1/linearicons.css">
+	<link rel="stylesheet" href="~/frontend/css1/font-awesome.min.css">
+	<link rel="stylesheet" href="~/frontend/css1/bootstrap.css">
+	<link rel="stylesheet" href="~/frontend/css1/magnific-popup.css">
+	<link rel="stylesheet" href="~/frontend/css1/jquery-ui.css">
+	<link rel="stylesheet" href="~/frontend/css1/nice-select.css">
+	<link rel="stylesheet" href="~/frontend/css1/animate.min.css">
+	<link rel="stylesheet" href="~/frontend/css1/owl.carousel.css">
+	<link rel="stylesheet" href="~/frontend/css1/main.css">
+</head>
+@if (TempData["SuccessMessage"] != null)
+	@if (TempData["SuccessMessage"] != null)
+	{
+		<div class="alert alert-success" role="alert" style="text-align: center;color:red">
+			<strong>
+				Notification:
+			</strong> @TempData["SuccessMessage"]
+		</div>
+	}
+<body>
+	<header id="header">
+		<div class="header-top">
+			<div class="container">
+				<div style="background-color:bisque" class="row align-items-center">
+					<div class="col-lg-6 col-sm-6 col-6 header-top-left">
+						@if (User.Identity.IsAuthenticated)
+							{
+
+							<a style="color: forestgreen; font-weight: bold">
+								<i> Welcome To ARS</i>
+							</a>
+
+
+
+						}
+					</div>
+					<div class="col-lg-6 col-sm-6 col-6 header-top-right">
+						<div class="header-social">
+							@if (User.Identity.IsAuthenticated)
+							{
+								<li>
+									<a a style="color: lightskyblue; font:bolder" href="/cart/Index"><img style="width:70px" src="~/frontend/img/ticket.png" />Cart</a>
+								</li>
+
+								<div class="header-social">
+									<i class="fa-solid fa-user"></i> @User.Identity.Name
+									
+									<form style="color: red; font-weight: bold;" method="post" asp-action="SignOut" asp-controller="Account">
+										<button type="submit" class="fa-solid fa-right-from-bracket">Logout</button>
+									</form>
+									
+								</div>
+							}
+							else
+							{
+								<div class="header-social">
+									<a style="color: forestgreen; font-weight: bold;" asp-controller="Account" asp-action="Login">
+										<i class="fa-solid fa-right-to-bracket"></i> LOGIN
+									</a>
+									<a style="color: dodgerblue; font-weight: bold;" asp-controller="Account" asp-action="Register">
+										<i class="fa-solid fa-user"></i> REGISTER
+									</a>
+								</div>
+							}
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container main-menu">
+			<div style="background-color:darkgrey" class="row align-items-center justify-content-between d-flex">
+				<div id="logo">
+					<a href="/">
+						<img style="width: 60px;" src="~/frontend/img/1logo.png" alt="" title="" />
+
+					</a>
+				</div>
+				<nav id="nav-menu-container">
+					<ul class="nav-menu">
+						<li><a href="/">HOME</a></li>
+
+						<li><a href="/InfomationPromotion">INFOMATION PROMOTION</a></li>
+						<li><a href="/about">ABOUT US</a></li>
+						<li><a href="/question">Q&A</a></li>
+						<li><a href="/contact">Contact</a></li>
+						<li><a href="/flight">Flight</a></li>
+					</ul>
+				</nav><!-- #nav-menu-container -->
+			</div>
+		</div>
+	</header><!-- #header -->
+	<br />
+	<!-- start banner Area -->
+	<!-- End banner Area -->
+	@RenderBody()
+	<!-- start footer Area -->
+	<footer class="footer-area section-gap">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-lg-3 col-md-6 col-sm-6">
+					<div id="logo">
+						<a href="/">
+							<img class="footer-logo" src="~/frontend/img/1logo.png" alt="" title="" />
+						</a>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h6 class="footer-title"><a href="about">About Us</a></h6>
+						<p class="footer-description">Bringing Passengers a happy and good flight with a wonderful experience when boarding ARS Airlines' private jet</p>
+						<p class="footer-description">Our team works tirelessly to ensure every passenger enjoys a safe, comfortable, and luxurious experience.</p>
+						<p class="footer-description">ARS Airlines—your trusted partner for private jet travel, setting the standard for excellence in aviation.</p>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h6 class="footer-title"><a href="/InfomationPromotion">Discount</a></h6>
+						<p class="footer-description">Many incentives for passengers when flying with ARS airline</p>
+						<p class="footer-description">Take advantage of group discounts and holiday packages for an even better flying experience.</p>
+					</div>
+					
+				</div>
+			</div>
+
+			<div class="row footer-bottom d-flex justify-content-between align-items-center">
+				<p class="footer-text">
+					Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Group1-T5.2308.M0</a>
+				</p>
+				<div class="single-footer-widget">
+				
+					<a href="https://www.paypal.com" target="_blank">
+						<img class="paypal-logo" src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal Logo" title="PayPal" />
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<style>
+			.footer-area {
+				background-color: beige;
+				padding: 40px 0;
+				color: #555;
+				font-family: Arial, sans-serif;
+			}
+
+			.footer-logo {
+				width: 100%;
+				max-width: 370px;
+			}
+
+			.footer-title {
+				color: black;
+				font-weight: bold;
+				font-size: 1.2em;
+				margin-bottom: 10px;
+			}
+
+			.footer-description {
+				color: darkblue;
+				font-weight: 400;
+				font-size: 0.9em;
+				line-height: 1.6;
+			}
+
+			.footer-text {
+				color: plum;
+				font-weight: 400;
+				font-size: 0.9em;
+				text-align: center;
+			}
+
+				.footer-text a {
+					color: plum;
+					font-weight: bold;
+					text-decoration: none;
+				}
+
+					.footer-text a:hover {
+						text-decoration: underline;
+					}
+
+			.footer-bottom {
+				margin-top: 20px;
+				border-top: 1px solid #ddd;
+				padding-top: 15px;
+			}
+
+			.single-footer-widget {
+				margin-bottom: 20px;
+			}
+
+			.cart-button {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				color: #000; /* Black color for the icon */
+				font-size: 2em; /* Increase icon size */
+				padding: 10px; /* Adjust padding to fit the icon */
+				border: none; /* Remove border */
+				background: transparent; /* No background */
+				cursor: pointer; /* Pointer cursor on hover */
+				transition: transform 0.3s ease; /* Smooth transform */
+			}
+
+				.cart-button:hover {
+					transform: scale(1.2); /* Slightly enlarge the icon on hover */
+				}
+
+				.cart-button i {
+					font-size: 2.5em; /* Increase icon size */
+				}
+
+
+	</style>
+	</footer>
+
+	<!-- End footer Area -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/frontend/js1/vendor/jquery-2.2.4.min.js"></script>
+	<script src="~/frontend/js1/popper.min.js"></script>
+	<script src="~/frontend/js1/vendor/bootstrap.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+	<script src="~/frontend/js1/jquery-ui.js"></script>
+	<script src="~/frontend/js1/easing.min.js"></script>
+	<script src="~/frontend/js1/hoverIntent.js"></script>
+	<script src="~/frontend/js1/superfish.min.js"></script>
+	<script src="~/frontend/js1/jquery.ajaxchimp.min.js"></script>
+	<script src="~/frontend/js1/jquery.magnific-popup.min.js"></script>
+	<script src="~/frontend/js1/jquery.nice-select.min.js"></script>
+	<script src="~/frontend/js1/owl.carousel.min.js"></script>
+	<script src="~/frontend/js1/mail-script.js"></script>
+	<script src="~/frontend/js1/main.js"></script>
+
+</body>
+</html>

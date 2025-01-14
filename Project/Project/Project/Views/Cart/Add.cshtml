@@ -1,0 +1,131 @@
+﻿@model Project.Models.Cart
+
+@{
+    ViewData["Title"] = "Add Booking";
+    Layout = "~/Views/Frontend.cshtml";
+}
+
+<br/>
+<br />
+<br />
+<br />
+<br />
+
+<div class="container mt-5">
+    <h1 class="text-center text-primary mt-4">Add Booking</h1>
+
+    <div class="mt-4">
+       
+    </div>
+    
+
+    <div class="mt-4">
+        <h4 class="text-info">Ticket Class Price</h4>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th colspan="4"> Aircraft @Model.Flight.Aircraft.Model</th>
+                </tr>
+                <tr>
+                    <th>Ticket Class</th>
+                    <th>Price</th>
+                    <th>
+
+                        Number of Seats
+                    </th>
+                    <th>Number Of Seats Available</th>
+                </tr>
+            </thead>
+            <tbody>
+                 @foreach (var item in Model.Flight.Aircraft.Aircraft_Tickets)
+             {
+                <tr>
+                        <td>@item.Ticket.ClassName</td>
+                        
+                        <td> $ @(Model.Flight.Price * item.Ticket.Multiplier)</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.QuantityOnHand</td>
+                </tr>
+             }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-6 offset-md-3 mt-5">
+        @if(ViewBag.Error != null)
+        {
+            <h5 style="color: red;">@ViewBag.Error</h5>
+        }
+        
+        <form asp-action="Add" method="post">
+            <div class="alert alert-info">Fill in the details below to complete the booking:</div>
+            <input  asp-for="FlightId" type="hidden"/>
+            <input asp-for="AccId" type="hidden" />
+            <!-- Choose Ticket Type -->
+            <div class="mb-4">
+                <label for="TicketClassId" class="form-label">Choose Ticket Type<span class="text-danger">*</span></label>
+                <select asp-for="TicketClassId" class="form-select" asp-items="ViewBag.Tickets">
+                    <option value="0">--- Select ---</option>
+                </select>
+                <span asp-validation-for="TicketClassId" class="text-danger"></span>
+            </div>
+
+            <!-- Full Name -->
+            <div class="mb-4">
+                <label for="Fullname" class="form-label">Full Name<span class="text-danger">*</span></label>
+                <input asp-for="Fullname" class="form-control" placeholder="Enter your full name" />
+                <span asp-validation-for="Fullname" class="text-danger"></span>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-4">
+                <label for="Email" class="form-label">Email<span class="text-danger">*</span></label>
+                <input asp-for="Email" type="email" class="form-control" placeholder="Enter your email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <!-- Date of Birth -->
+            <div class="mb-4">
+                <label for="Dob" class="form-label">Date of Birth<span class="text-danger">*</span></label>
+                <input asp-for="Dob" type="date" class="form-control" />
+                <span asp-validation-for="Dob" class="text-danger"></span>
+            </div>
+
+            <!-- Gender -->
+            <div class="mb-4">
+                <label for="Gender" class="form-label">Gender<span class="text-danger">*</span></label>
+                <select asp-for="Gender" class="form-select">
+                    <option value="">--- Select Gender ---</option>
+                    <option value="true">Male</option>
+                    <option value="false">Female</option>
+                </select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+
+            <!-- Country -->
+            <div class="mb-4">
+                <label for="Country" class="form-label">Country<span class="text-danger">*</span></label>
+                <input asp-for="Country" class="form-control" placeholder="Enter your country" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+
+            <!-- Identity Number -->
+            <div class="mb-4">
+                <label for="IdentityNumber" class="form-label">Identity Number<span class="text-danger">*</span></label>
+                <input asp-for="IdentityNumber" class="form-control" placeholder="Enter your ID number" />
+                <span asp-validation-for="IdentityNumber" class="text-danger"></span>
+            </div>
+
+            <div class="d-grid gap-2">
+                <input type="submit" value="Add To Cart" class="btn btn-success btn-lg" />
+            </div>
+        </form>
+    </div>
+
+    <div class="text-center mt-3">
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+

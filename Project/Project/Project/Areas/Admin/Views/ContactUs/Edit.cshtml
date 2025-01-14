@@ -1,0 +1,95 @@
+﻿@model Project.Models.ContactUs
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="~/backend/vendor/datatables/datatables.min.css" rel="stylesheet" />
+</head>
+<h1 class="mb-4">Reply Contact Us</h1>
+
+<form asp-action="Edit" class="p-4 border rounded shadow-sm bg-light">
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+    <input type="hidden" asp-for="Id" />
+
+    <!-- Phone Field -->
+    <div class="form-group position-relative mb-4">
+        <label asp-for="Phone" class="form-label fw-bold">
+            <i class="fas fa-phone-alt me-2 text-primary"></i> Phone
+        </label>
+        <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-phone-alt"></i></span>
+            <input asp-for="Phone" class="form-control" placeholder="Enter phone number" />
+        </div>
+        <span asp-validation-for="Phone" class="text-danger"></span>
+    </div>
+
+    <!-- Name Field -->
+    <div class="form-group position-relative mb-4">
+        <label asp-for="Name" class="form-label fw-bold">
+            <i class="fas fa-user me-2 text-primary"></i> Name
+        </label>
+        <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+            <input asp-for="Name" class="form-control" placeholder="Enter full name" />
+        </div>
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <!-- Comment Field -->
+    <div class="form-group position-relative mb-4">
+        <label asp-for="Comment" class="form-label fw-bold">
+            <i class="fas fa-comment-dots me-2 text-primary"></i> Comment
+        </label>
+        <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-comment-dots"></i></span>
+            <textarea asp-for="Comment" class="form-control" rows="3" placeholder="Add a comment"></textarea>
+        </div>
+        <span asp-validation-for="Comment" class="text-danger"></span>
+    </div>
+
+    <!-- Email Field -->
+    <div class="form-group position-relative mb-4">
+        <label asp-for="Email" class="form-label fw-bold">
+            <i class="fas fa-envelope me-2 text-primary"></i> Email
+        </label>
+        <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+            <input asp-for="Email" class="form-control" placeholder="Enter email address" />
+        </div>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <!-- Status Checkbox -->
+    <div class="form-check mb-4">
+        <input class="form-check-input" asp-for="Status" id="statusCheck" />
+        <label class="form-check-label fw-bold" for="statusCheck">
+            <i class="fas fa-toggle-on text-primary me-2"></i> Status
+        </label>
+    </div>
+
+    <!-- Created Date Field -->
+    <div class="form-group position-relative mb-4">
+        <label asp-for="CreatedDate" class="form-label fw-bold">
+            <i class="fas fa-calendar-alt me-2 text-primary"></i> Created Date
+        </label>
+        <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+            <input asp-for="CreatedDate" class="form-control" placeholder="Select date" />
+        </div>
+        <span asp-validation-for="CreatedDate" class="text-danger"></span>
+    </div>
+
+    <!-- Buttons -->
+    <div class="form-group d-flex justify-content-start">
+        <button type="submit" class="btn btn-primary me-2">
+            <i class="fas fa-save me-2"></i> Save
+        </button>
+        <a asp-action="Index" class="btn btn-secondary">
+            <i class="fas fa-arrow-left me-2"></i> Back to List
+        </a>
+    </div>
+</form>
