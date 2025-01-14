@@ -10,7 +10,7 @@
 <a  href="https://github.com/bichlienho/asp2"><strong>Explore the source »</strong></a>
 
 <br  /><a  href="https://youtu.be/xs2C6G4tZCw" target="_blank">Video</a>
-<a href="https://homestyler-livid.vercel.app/">view demo</a>
+
 
 
   ### Built With
